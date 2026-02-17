@@ -1,0 +1,164 @@
+2:
+
+1. min(Pa, Pb) / max(Pa, Pb) >= 0.8
+2. If the TPR and FPR aren't the same for both groups, then EO is not satisfied. If the TPR and FPR are the same for both groups, but the base rates are different, then DP is not satisfied.
+3. TPR_A = 0.8, FPR_A = 0.1
+   TPR_B = 0.6, FPR_B = 0.1
+- Since TPR_A and TPR_B aren't the same, EO is not satisfied.
+- A: 90/200 = 0.45, B: 70/200 = 0.35
+  Since they differ, DP is not satisfied
+4.
+5. Let's say we have a model that predicts if a student will pass. If we have the features: time spent studying and the quality of the school. Group A goes to a higher quality school while B goes to a lower quality school. Removing this feature will harm the model's accuracy.
+6. - Even if gender isn't present, the other features might be effected by the gender. For example if women earn less, then their salary will also be less even if gender isn't specified.
+- All of them
+- We try to map the features to a gender. If we are reliably able to predict the gender given the features, then we have a proxy discrimination.
+7. - Data: watch time, Objective: maximize watch time, Metric: average watch time, Harm: spending too much time on the app, Mitigation: warning for exessive watch time;
+-  Data: location of crimes, Objective: predict where the crimes happen, Metric: prediction accuracy, Harm: the model being biased, Mitigation: human oversight;
+- Data: state of the patient, Objective: determine the severity of the situation, Metric: survival rate, Harm: the model being biased, Mitigation: human oversight;
+8. - The taken paths are unique and can be tracked
+- Using the paths taken they can find out the location of the user
+- You can't really make it truly anonoymous but adding too much noise will also make the model not be accurate, so the tradeoff would be accuracy.
+9. - The hostpital staff, the developers of the model
+- The accuracy, the biases, was there human oversight
+- If the model is good then it would save more lives which is good. Patients deserve explanations as to why they might have (not) been chosen.
+10. - When it gets train on the biased data, it will increase it's bias, meaning it's trained on even more biased data leading to it being even more biased.
+- Likely to increase
+- Removing the zip codes as a feature
+11. - Ones where we need to understand how the decision was made
+- Ones where we don't need to understand how the choice was made 
+- We can't exactly tell them why, but we can assure them that using previous data it's made that prediction.
+12. - 0.10 euros and 0.000005 tonnes CO2
+- 1 million euros
+- If the value it brings outweights the cost and damage done
+13. - People's image being used without thier permission
+- Watermarking and limiting number of generations
+- Data: images of people, Objective: generating images, Metric: image quality and user satisfaction, Harm: deep fakes, privacy concerns, Mitigation: watermarking, filtering prompts, limiting number of generations
+
+
+3: 
+
+1. Mean: 6, std: sqrt(8). −1.41, −0.71, 0, 0.71, 1.41
+2. It will make 3 new columns, {0, 1, 0}
+3. 3500, 750, 750.
+4. Time since last purchase, number of purchase a month, avg purchase amount
+5. If it's a large number of data, we can just drop those rows. If not we can use some impute strategy.
+6. It kinda forces the data to follow a distribution
+7. Data and target leakage, different distributions
+8. - The income will play a big role
+- No problems
+- Trees because they don't care about the scale of the data
+9. - Dropping the rows with missing values, replacing missing values with median, kNN imputation
+- Dropping the rows when we have a lot of data points, kNN imputation also when we have a good amount of data points, median otherwise
+- Dropping the rows is harmful if we don't have much data, the others are harmful because they could skew the results
+10. Cancellation reason because they would need to have cancelled their subscription in order to give a reason
+11. None of the features are gotten after getting the price of the house, meaning there is no leakage.
+12. - no leakage
+- feature leakage
+- target leakage
+- no leakage
+13. - It's only trained on data from California
+- It's only trained on data from reviews
+- It misses out the people who suffered from side effects
+- Survivorship bias
+14. - With Covid the demand would drop
+- No, since Covid started in March
+- The distribution would change and the error would increase
+15. - The distribution wouldn't be the same
+- It's correct but only in that region
+- Better test set
+
+
+4:
+
+1. 250000
+2. It will predict the class that's >= 0.5. The value 0.73 how sure the model is in it's guess
+3. 0.61
+4. It maximizes the distance to the closest training points. Larger C means less misclassification with a smaller margin, smaller C means more misclassification with a larger margin. 
+5. L1 regularization just adds the absolute value of w, while L2 adds w^2. L1 can lead to the weights becoming 0 while L2 will only get close to 0. 
+6. - as sigma aproaches 0, w also aproaches 0. Meaning it will become kNN with k=1. As it aproaches inifnity, all weights will be near 1. 
+- It's similar to kNN as it uses distances, to kernel method because the exp() is a kernel method.
+- nonlinear
+- expensive cost
+- 
+7. f(x) = w2x2 + w1x1 + w0.
+w0 < 0, w2 + w0 > 0, w1 + w0 > 0, w2 + w1 + w0 < 0
+w2 < 0, w2 > -w0, w1 > -w0, w2 + w1 < -w0
+w2 + w1 > -2w0
+w2 + w1 + w0 > -w0
+-w0 > 0
+But w2 + w1 + w0 should be < 0
+-
+- If x1 = 0, output x2, else output !x2
+- Transforming the problem to a higher dimension to solve it
+8. - Younger people tend to move more than older people
+- Even though the accuracy drops, the drop isn't too significant
+- Evaluate based on age and see if the Demographic Parity and Equal Opportnity are the same
+9. - Linear hyperplane
+- They both use distances
+- Spherical
+- Class A: (0, 0), (1, 1). Class B: (0, 1), (1, 0). They both have centroids at (0.5, 0.5)
+- If the number of Centroids is C, and number of parameters d, then: Cd.
+kNN would need for every point so nd, lr for C classes Cd.
+
+
+5:
+
+1. 70 / 15 / 15
+2. Overfitting
+3. P = 0.82, R = 0.9, F1 = 0.86
+4. When FP are more costly like spam filtering
+5. - Since we get to test the model on every split we make sure it performs well in all cases
+- The bias should decrease, high variance, cost increases
+- Since it's not too costly and the sizes of the splits are big enough to train and test
+- We may get the same patient in both splits, so we should split by patient not by sample
+6. - E[f^(x)] - f(x)
+- Because the output doesn't depend on the input x
+- It's very sentitive to changes
+- Because we make sure it doesn't overfit on the data
+7. - Accuracy = 0.95, Precision = 0.15, Recall = 0.9, F1 = 0.26.
+- Since the number of people who actually have the disease is so small, a simple model can just predict healthy for every patient and score high, even though for the class of people with the disease it will always guess incorrect.
+- Since the disease is rare
+8. Data and feature leakage, overfitting
+9. The second model since it doesn't have high variance. The first model is probably overfit on the input data.
+
+
+6:
+
+1. (1, 1, 2, 2). New centroids (1.5, 1), (4.5, 3.5)
+2. Euclidean = 5.385, Manhattan = 9
+3. Since it's not convex, there can be multiple local minima. Running it multiple times with different starting points
+4. The probabilities it belongs to each cluster, while kNN will just select one cluster.
+5. k = 3
+6. - PCA
+- t-SNE
+- DBSCAN
+- GMM
+7. - 15%
+- Since the training will be much faster and not much is lost
+8. Since the global distances are distorted
+9. 
+10. - It doesn't have to be since we don't know all the features
+- Not really
+- Clustering is unsupervised so it just placed it to the closest centroid 
+
+
+7:
+
+1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
