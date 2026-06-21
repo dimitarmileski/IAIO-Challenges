@@ -1,5 +1,3 @@
-#CEOAI Practice Round 2 - My Solutions & Setup
-
 ##Environment Setup
 From inside this folder (`AP/`), run:
 ```bash
