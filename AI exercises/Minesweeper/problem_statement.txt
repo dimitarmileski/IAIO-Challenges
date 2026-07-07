@@ -1,0 +1,21 @@
+======================================================================
+CEOAI / EUROAI 2026 Challenge: Subgrid Mine-Risk Assessment (SMRA)
+======================================================================
+
+TASK DESCRIPTION:
+In automated puzzle solvers, determining the safety index of an unrevealed 
+grid tile based on adjacent conditions is a highly non-linear classification 
+task. In this problem, you are given partial configurations of 9x9 Minesweeper 
+boards. Each board state is provided as a grid where some cells are revealed, 
+some cells are explicitly flagged as mines (-2), and others remain hidden (-1).
+
+Your objective is to predict whether a specific targeted hidden tile contains 
+a mine (1) or is safe (0).
+
+DATASET STRUCTURE:
+- board_state: A flattened 81-element string representing the 9x9 grid row-by-row.
+- target_row & target_col: The 0-indexed coordinate of the hidden cell to evaluate.
+- is_mine: (Train only) Binary label where 1 represents a mine, and 0 indicates safe.
+
+EVALUATION METRIC:
+Submissions will be evaluated using the Macro F1-Score.
