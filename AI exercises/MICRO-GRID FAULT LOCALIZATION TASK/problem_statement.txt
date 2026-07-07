@@ -1,0 +1,45 @@
+================================================================================
+EUROAI PRACTICE ROUND: MICRO-GRID FAULT LOCALIZATION TASK
+================================================================================
+
+1. CONTEXT & PROBLEM DESCRIPTION
+--------------------------------------------------------------------------------
+Deep within an automated manufacturing grid, a sequence of multi-stage circuit 
+relays has begun registering localized energy drop-offs. Sensors have logged 
+a series of telemetry measurements across different nodes. However, due to 
+severe signal degradation during transmission, the exact component operational 
+state ('fault_status') could not be archived for all active intersections.
+
+Your objective is to read the historical logs, analyze the relationships between 
+adjacent voltage measurement variations, and output a predicted continuous 
+classification probability indicating the likelihood of a fault state for the 
+unlabeled test query configurations.
+
+2. DATASET SPECIFICATIONS
+--------------------------------------------------------------------------------
+You are provided with two primary structural tracking sheets:
+- train.csv: Complete telemetry observations containing ground truth flags.
+- test.csv: Identical sensor logs missing the final operational labels.
+
+Features:
+* node_id         : Unique tracking identifier for each circuit intersection.
+* stage_alpha     : Continuous voltage measurement at primary terminal Alpha (V).
+* stage_beta      : Continuous voltage measurement at downstream terminal Beta (V).
+* harmonic_index  : A structural coefficient reflecting localized line resonance.
+* fault_status    : Binary state target flag (0 = Nominal, 1 = Component Fault).
+
+3. EVALUATION METRIC
+--------------------------------------------------------------------------------
+Submissions are evaluated using the Area Under the ROC Curve (ROC AUC) metric. 
+Your pipeline must generate raw, un-thresholded continuous probabilities 
+representing the likelihood of the fault state (1) for each node in the test set.
+
+4. SUBMISSION FILE FORMAT
+--------------------------------------------------------------------------------
+The file must contain a header row and follow this precise column layout:
+
+node_id,fault_probability
+NODE_2000,0.145
+NODE_2001,0.892
+...
+================================================================================
